@@ -1,0 +1,11 @@
+Each floor has Up and Down buttons. Pressing one of these buttons generates a “floor request” - for  an elevator to go to the floor for a subsequent trip in the selected direction.
+
+When the empty cabin is at a floor with doors closed, it will respond to a floor request.
+
+When an empty cabin is responding to a floor request, it will not stop at intermediate floors.
+
+The floor button inside the cabin will be selectable according to the floor request, e.g. if an Up Button was pressed on the 10th floor, all floors above 10 will be selectable. Floors 10 and below will not be selectable. This creates a collection of possible cabin requests - requests made from inside the cabin. 
+
+When a cabin is executing a cabin request  then it’s going to respond to all outstanding floor requests consistent with the current movement. E.g. if the cabin is moving down passing the 7th floor, and the Down button is pressed on the 7th floor, the cabin is going to stop there, and all floors below 7 will be selectable. 
+
+After the last cabin requests for a given trip has been executed, the next outstanding “out of the way” request will be  to be processed on the first come first serve basis. Example: the cabin was moving down with the last stop at 4th floor. During the trip it was called on the 7th, 2nd, and 9th floors, in that time order. The cabin is going to serve the 7th floor first.
