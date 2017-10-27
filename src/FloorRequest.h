@@ -12,13 +12,20 @@
 
 namespace Elevator {
 
+enum Direction {
+  down,
+  up
+};
+
 class FloorRequest: public Request {
 public:
-	FloorRequest();
-	virtual ~FloorRequest();
+  FloorRequest();
+  // Hmmm, maybe this should be a value type
+  FloorRequest(unsigned, Direction);
+  virtual ~FloorRequest();
 private:
-	unsigned floor;
-	int direction;
+  unsigned floor;
+  Direction direction;
 };
 
 } /* namespace Elevator */

@@ -15,7 +15,7 @@ namespace Elevator {
 class Tracker {
 public:
 	void ready(Controller& controller);
-	void addRequest(Request& req);
+	void addRequest(const Request& req);
 private:
 	void addToQueue(Request& req);
 public:

@@ -18,4 +18,8 @@ Tracker::~Tracker() {
 	// TODO Auto-generated destructor stub
 }
 
+void Tracker::addRequest(const Request& req)
+{
+
+}
 } /* namespace Elevator */

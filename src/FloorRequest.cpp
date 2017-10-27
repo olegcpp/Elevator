@@ -14,6 +14,10 @@ FloorRequest::FloorRequest() {
 
 }
 
+FloorRequest::FloorRequest(unsigned f, Direction d) : floor(f), direction(d)
+{
+}
+
 FloorRequest::~FloorRequest() {
 	// TODO Auto-generated destructor stub
 }
