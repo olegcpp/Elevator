@@ -1,21 +1,25 @@
 /*
- * FloorRequest.cpp
+ * Tracker.cpp
  *
  *  Created on: Oct 9, 2017
  *      Author: oleg
  */
 
-#include "FloorRequest.h"
+#include "Tracker.h"
 
 namespace Elevator {
 
-FloorRequest::FloorRequest() {
+Tracker::Tracker() {
 	// TODO Auto-generated constructor stub
 
 }
 
-FloorRequest::~FloorRequest() {
+Tracker::~Tracker() {
 	// TODO Auto-generated destructor stub
 }
 
+void Tracker::addRequest(const Request& req)
+{
+
+}
 } /* namespace Elevator */
