@@ -19,7 +19,8 @@ public:
 : controller(controller) {}
 
 	virtual ~Sensor();
-public:
+
+protected:
 	Controller& controller;
 };
 

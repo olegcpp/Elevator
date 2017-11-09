@@ -1,26 +1,30 @@
 /*
- * Tracker.h
+ * Bank.h
  *
  *  Created on: Oct 9, 2017
  *      Author: oleg
  */
 
-#ifndef TRACKER_H_
-#define TRACKER_H_
+#ifndef BANK_H_
+#define BANK_H_
 
 #include "Request.h"
 #include "Controller.h"
+#include "Cabin.h"
+
 namespace Elevator {
 
-class Tracker {
+class Bank {
 public:
 	void ready(Controller& controller);
 	void addRequest(const Request& req);
+  void addCabin(const Cabin &);
+  bool isReady() { return false; }
 private:
 	void addToQueue(Request& req);
 public:
-	Tracker();
-	virtual ~Tracker();
+	Bank();
+	virtual ~Bank();
 };
 
 } /* namespace Elevator */

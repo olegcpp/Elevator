@@ -1,7 +1,9 @@
 #include "catch.hpp"
-#include "Tracker.h"
+#include "Bank.h"
 #include "Controller.h"
 #include "FloorRequest.h"
+#include "SensorStub.h"
+#include "Cabin.h"
 
 TEST_CASE("Elevator Acceptance Tests", "") {
 
@@ -18,10 +20,18 @@ TEST_CASE("Elevator Acceptance Tests", "") {
        Controller->Controller:wait()
        Controller->Cabin:closeDoors()
        Controller->Tracker:ready()*/
-    Elevator::Tracker t;
-    t.addRequest(Elevator::FloorRequest(3, Elevator::Direction::down));
-    // How do I know when the t is ready? Ready looks like a command.
-    REQUIRE(true == false);
+    Elevator::Bank b;
+    Elevator::Controller c;
+    Elevator::SensorStub s(c);
+    Elevator::Cabin cabin;
+    b.addCabin(cabin);
+    b.addRequest(Elevator::FloorRequest(3));
+
+    s.arrivingAtFloor(3);
+
+    // how do I time that the doors are closed
+    REQUIRE(cabin.areDoorsClosed());
+    REQUIRE(b.isReady());
   }
 
   SECTION("Elevator is empty, and moving to pick up one user. Another pushes the button.") {
@@ -59,8 +69,7 @@ TEST_CASE("Elevator Acceptance Tests", "") {
 
     // First problem - how do I setup a sensor at a spot?
     //    Sensor->Controller:atFloor(4);
-    Elevator::Tracker t;
-    t.addRequest(Elevator::FloorRequest(3, Elevator::Direction::up));
-    REQUIRE(true == false);
+    Elevator::Bank b;
+    b.addRequest(Elevator::FloorRequest(3));
   }
 }

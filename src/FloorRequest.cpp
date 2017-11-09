@@ -14,7 +14,7 @@ FloorRequest::FloorRequest() {
 
 }
 
-FloorRequest::FloorRequest(unsigned f, Direction d) : floor(f), direction(d)
+FloorRequest::FloorRequest(unsigned f) : floor(f)
 {
 }
 
