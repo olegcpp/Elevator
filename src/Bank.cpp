@@ -1,25 +1,29 @@
 /*
- * Tracker.cpp
+ * Bank.cpp
  *
  *  Created on: Oct 9, 2017
  *      Author: oleg
  */
 
-#include "Tracker.h"
+#include "Bank.h"
 
 namespace Elevator {
 
-Tracker::Tracker() {
+Bank::Bank() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Tracker::~Tracker() {
+Bank::~Bank() {
 	// TODO Auto-generated destructor stub
 }
 
-void Tracker::addRequest(const Request& req)
+void Bank::addRequest(const Request& req)
 {
+
+}
+
+void Bank::addCabin(const Cabin &) {
 
 }
 } /* namespace Elevator */

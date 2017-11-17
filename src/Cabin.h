@@ -28,6 +28,7 @@ public:
 	unsigned getFloor() {return floor;}
 	MoveStatus getMoveStatus() {return moveStatus;}
 	DoorsStatus getDoorsStatus() {return doorsStatus;}
+  bool areDoorsClosed() {return false;}
 
 public:
 	Cabin();

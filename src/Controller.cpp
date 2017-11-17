@@ -18,4 +18,8 @@ Controller::~Controller() {
 	// TODO Auto-generated destructor stub
 }
 
+void Controller::atFloor(unsigned int floor) {
+
+}
+
 } /* namespace Elevator */

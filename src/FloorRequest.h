@@ -21,7 +21,7 @@ class FloorRequest: public Request {
 public:
   FloorRequest();
   // Hmmm, maybe this should be a value type
-  FloorRequest(unsigned, Direction);
+  FloorRequest(unsigned);
   virtual ~FloorRequest();
 private:
   unsigned floor;
