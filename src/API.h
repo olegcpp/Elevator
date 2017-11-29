@@ -14,23 +14,24 @@
 namespace Hardware {
 
 //Interface class for the physical cabin
+class ButtonAPI;
+
 class CabinAPI {
 public:
 	enum MoveStatus {UP, DOWN, REST};
 	enum DoorsStatus {OPEN, CLOSE, OPENING, CLOSING};
 
-	virtual int id() const = 0;
-
 	virtual void moveUp() = 0;
 	virtual void moveDown() = 0;
-	virtual void stop() = 0; //stops at nearest floor
+	virtual void stop() = 0; //stops at the nearest floor
+	virtual MoveStatus getMoveStatus() const = 0;
+	virtual unsigned getNearestFloor() const = 0;
 
 	virtual void openDoors() = 0;
 	virtual void closeDoors() = 0;
-
-	virtual unsigned getNearestFloor() const = 0;
-	virtual MoveStatus getMoveStatus() const  = 0;
 	virtual DoorsStatus getDoorsStatus() const = 0;
+
+	std::vector<std::unique_ptr<ButtonAPI>>& buttons();
 
 	CabinAPI() {};
 	virtual ~CabinAPI();
@@ -41,28 +42,24 @@ public:
 	virtual void reset() = 0;
 	virtual void push() = 0;
 	virtual bool isPushed() const = 0;
-
-	public:
-		ButtonAPI() {};
-		virtual ~ButtonAPI() = 0;
+public:
+	ButtonAPI() {};
+	virtual ~ButtonAPI() = 0;
 };
 
-class FloorUI {
-public:
+struct FloorAPI {
 	std::unique_ptr<ButtonAPI> up;
 	std::unique_ptr<ButtonAPI> down;
 };
 
-class System {
-public:
-	virtual unsigned numberOfFloors() const = 0;
-	virtual std::vector<std::unique_ptr<CabinAPI>> cabins() = 0;
-	virtual std::vector<std::unique_ptr<ButtonAPI>> cabinUIs() = 0;
-	virtual std::vector<FloorUI> floorUIs() = 0;
+struct SystemAPI {
+	unsigned numberOfFloors;
+	std::vector<std::unique_ptr<CabinAPI>> cabins;
+	std::vector<FloorAPI>& floorUIs;
 
 public:
-	System();
-	virtual ~System() = 0;
+	SystemAPI();
+	virtual ~SystemAPI();
 };
 
 } //namespace Hardware
